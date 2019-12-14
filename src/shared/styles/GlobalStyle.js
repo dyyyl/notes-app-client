@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-weight: 700;
     font-size: var(--extra-large);
-    letter-spacing: 4px;
+    letter-spacing: 2px;
   }
 
   h2 {
