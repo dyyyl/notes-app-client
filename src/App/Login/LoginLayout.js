@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const HomeLayout = styled.main`
-  height: 45vh;
+const LoginLayout = styled.main`
+  height: 75vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 `;
 
-export default HomeLayout;
+export default LoginLayout;

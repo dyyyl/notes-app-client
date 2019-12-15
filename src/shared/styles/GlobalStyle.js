@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
     background-color: var(--light-grey);
     margin: 0;
     color: var(--dark-grey);

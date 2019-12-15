@@ -6,16 +6,20 @@ import Navigation from 'shared/components/Navigation';
 import NotFound from 'shared/components/NotFound';
 
 import Home from './Home';
+import Login from './Login';
 
 const App = () => (
-  <BrowserRouter>
-    <Navigation />
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route component={NotFound} />
-    </Switch>
-    <GlobalStyle />
-  </BrowserRouter>
+  <div style={{ minHeight: '100vh' }}>
+    <BrowserRouter>
+      <Navigation />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/login" exact component={Login} />
+        <Route component={NotFound} />
+      </Switch>
+      <GlobalStyle />
+    </BrowserRouter>
+  </div>
 );
 
 export default App;

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-const HomeLayout = styled.main`
-  height: 45vh;
+const Form = styled.form`
+  margin: 2rem 0;
+  width: 40vw;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 `;
 
-export default HomeLayout;
+export default Form;
