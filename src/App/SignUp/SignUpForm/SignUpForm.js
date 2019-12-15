@@ -1,3 +1,4 @@
+import { Auth } from 'aws-amplify';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -18,11 +19,20 @@ const SignUpForm = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     setLoading(true);
 
-    setNewUser('test');
-
-    setLoading(false);
+    try {
+      const newUser = await Auth.signUp({
+        username: fields.email,
+        password: fields.password,
+      });
+      setLoading(false);
+      setNewUser(newUser);
+    } catch (error) {
+      console.error(error.message);
+      setLoading(false);
+    }
   };
   return (
     <Form onSubmit={handleSubmit}>

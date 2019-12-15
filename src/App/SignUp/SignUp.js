@@ -1,4 +1,3 @@
-import { Auth } from 'aws-amplify';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -37,7 +36,9 @@ const SignUp = ({ setAuthenticated }) => {
           fields={fields}
           handleFieldChange={handleFieldChange}
           loading={loading}
+          setAuthenticated={setAuthenticated}
           setLoading={setLoading}
+          setRedirect={setRedirect}
         />
       )}
       {redirect ? <Redirect to="/" /> : null}

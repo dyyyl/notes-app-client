@@ -1,3 +1,4 @@
+import { Auth } from 'aws-amplify';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -11,7 +12,9 @@ const SignUpConfirmation = ({
   fields,
   handleFieldChange,
   loading,
+  setAuthenticated,
   setLoading,
+  setRedirect,
 }) => {
   const validateForm = () => fields.confirmationCode.length > 0;
 
@@ -19,6 +22,17 @@ const SignUpConfirmation = ({
     event.preventDefault();
 
     setLoading(true);
+
+    try {
+      await Auth.confirmSignUp(fields.email, fields.confirmationCode);
+      await Auth.signIn(fields.email, fields.password);
+
+      setAuthenticated(true);
+      setRedirect(true);
+    } catch (error) {
+      console.error(error.message);
+      setLoading(false);
+    }
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -42,7 +56,9 @@ SignUpConfirmation.propTypes = {
   fields: PropTypes.object.isRequired,
   handleFieldChange: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  setAuthenticated: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
+  setRedirect: PropTypes.func.isRequired,
 };
 
 export default SignUpConfirmation;
