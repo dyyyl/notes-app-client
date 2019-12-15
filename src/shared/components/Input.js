@@ -6,7 +6,8 @@ const Input = styled.input`
   font-size: 2rem;
   font-weight: 200;
   letter-spacing: 0.1rem;
-  width: 25rem;
+  max-width: 50rem;
+  min-width: 25rem;
   padding: 1rem;
   border: 0;
   border-bottom: 1px solid var(--dark-grey);

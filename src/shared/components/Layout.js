@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginLayout = styled.main`
+const Layout = styled.main`
   height: 75vh;
   display: flex;
   flex-direction: column;
@@ -8,4 +8,4 @@ const LoginLayout = styled.main`
   justify-content: center;
 `;
 
-export default LoginLayout;
+export default Layout;
