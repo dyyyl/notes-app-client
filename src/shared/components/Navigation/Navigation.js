@@ -14,7 +14,9 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
 
   return (
     <NavigationContainer>
-      <NavigationItem to="/">Hello Notes</NavigationItem>
+      <NavigationItem style={{ fontSize: '3rem' }} to="/">
+        Hello Notes
+      </NavigationItem>
       {authenticated ? (
         <NavigationItem to="/" onClick={handleLogout}>
           Logout
@@ -22,7 +24,9 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
       ) : (
         <NavigationSection>
           <NavigationItem to="/login">Login</NavigationItem>
-          <NavigationItem to="/signup">Sign up →</NavigationItem>
+          <NavigationItem to="/signup">
+            Sign up <span style={{ fontFamily: 'Arial' }}>→</span>
+          </NavigationItem>
         </NavigationSection>
       )}
     </NavigationContainer>

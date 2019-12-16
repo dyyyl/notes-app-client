@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavigationItem = styled(Link)`
+  font-family: 'Inter';
   font-weight: 300;
   font-size: var(--large);
   color: var(--dark-grey);

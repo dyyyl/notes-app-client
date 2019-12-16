@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GlobalStyle from 'shared/styles/GlobalStyle';
 import Navigation from 'shared/components/Navigation';
 
+import AddNote from './AddNote';
 import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
@@ -41,15 +42,14 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
-              exact
               path="/login"
               render={() => <Login setAuthenticated={setAuthenticated} />}
             />
             <Route
-              exact
               path="/signup"
               render={() => <SignUp setAuthenticated={setAuthenticated} />}
             />
+            <Route path="/notes/new" render={() => <AddNote />} />
             <Route component={NotFound} />
           </Switch>
           <GlobalStyle />

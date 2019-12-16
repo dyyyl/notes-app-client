@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
+const TextArea = styled.textarea`
+  font-family: Inter, Arial, Helvetica, sans-serif;
   margin: 1rem 0;
-  height: 5rem;
-  font-size: 2rem;
+  height: 40rem;
+  font-size: 1.75rem;
   font-weight: 200;
   letter-spacing: 0.1rem;
-  min-width: 25rem;
+  min-width: 70vw;
   padding: 1rem;
   border: 0;
-  border-bottom: 1px solid var(--dark-grey);
+  border: 1px solid var(--dark-grey);
   background-color: var(--light-grey);
+  resize: none;
 
   &:focus {
     outline: none;
@@ -22,4 +24,4 @@ const Input = styled.input`
   }
 `;
 
-export default Input;
+export default TextArea;
