@@ -1,5 +1,6 @@
 export default {
   s3: {
+    MAX_ATTACHMENT_SIZE: 5000000,
     REGION: process.env.REACT_APP_REGION,
     BUCKET: process.env.REACT_APP_BUCKET,
   },

@@ -4,10 +4,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import GlobalStyle from 'shared/styles/GlobalStyle';
 import Navigation from 'shared/components/Navigation';
-import NotFound from 'shared/components/NotFound';
 
 import Home from './Home';
 import Login from './Login';
+import NotFound from './NotFound';
 import SignUp from './SignUp';
 
 const App = () => {
