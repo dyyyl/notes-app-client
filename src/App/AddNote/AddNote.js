@@ -40,7 +40,6 @@ const AddNote = () => {
 
     try {
       const attachment = file.current ? await s3FileUpload(file.current) : null;
-
       await createNote({ content, attachment });
       setRedirect(true);
     } catch (error) {

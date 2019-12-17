@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     background-color: var(--light-grey);
     margin: 0;
     color: var(--dark-grey);
