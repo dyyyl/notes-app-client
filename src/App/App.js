@@ -41,15 +41,20 @@ const App = () => {
           />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route
-              path="/login"
-              render={() => <Login setAuthenticated={setAuthenticated} />}
-            />
-            <Route
-              path="/signup"
-              render={() => <SignUp setAuthenticated={setAuthenticated} />}
-            />
-            <Route path="/notes/new" render={() => <AddNote />} />
+            {!authenticated ? (
+              <>
+                <Route
+                  path="/login"
+                  render={() => <Login setAuthenticated={setAuthenticated} />}
+                />
+                <Route
+                  path="/signup"
+                  render={() => <SignUp setAuthenticated={setAuthenticated} />}
+                />
+              </>
+            ) : (
+              <Route path="/notes/new" render={() => <AddNote />} />
+            )}
             <Route component={NotFound} />
           </Switch>
           <GlobalStyle />

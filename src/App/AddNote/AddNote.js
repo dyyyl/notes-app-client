@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
+import createNote from 'shared/api/createNote';
 
 import Button from 'shared/components/Button';
+import File from 'shared/components/File';
 import Form from 'shared/components/Form';
 import Label from 'shared/components/Label';
 import Layout from 'shared/components/Layout';
@@ -8,17 +12,18 @@ import TextArea from 'shared/components/TextArea';
 
 import config from 'shared/config/amplify';
 
+import s3FileUpload from 'shared/libs/s3FileUpload';
+
 const AddNote = () => {
   const file = useRef(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const validateForm = () => content.length > 0;
 
-  const handleFileChange = (event) => {
-    const [currentFile] = event.target;
-    file.current = currentFile;
-  };
+  // eslint-disable-next-line
+  const handleFileChange = event => (file.current = event.target.files[0]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +37,16 @@ const AddNote = () => {
     }
 
     setLoading(true);
+
+    try {
+      const attachment = file.current ? await s3FileUpload(file.current) : null;
+
+      await createNote({ content, attachment });
+      setRedirect(true);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
   };
   return (
     <Layout>
@@ -45,17 +60,13 @@ const AddNote = () => {
         </Label>
         <Label htmlFor="file" left>
           Attachment
-          <input
-            type="file"
-            id="file"
-            style={{ marginTop: '1rem' }}
-            onChange={handleFileChange}
-          />
+          <File type="file" id="file" onChange={handleFileChange} />
         </Label>
         <Button disabled={!validateForm()}>
           {loading ? 'LOADING' : 'SUBMIT'}
         </Button>
       </Form>
+      {redirect && <Redirect to="/" />}
     </Layout>
   );
 };

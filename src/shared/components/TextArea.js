@@ -8,7 +8,7 @@ const TextArea = styled.textarea`
   font-weight: 200;
   letter-spacing: 0.1rem;
   min-width: 70vw;
-  padding: 1rem;
+  padding: 2rem;
   border: 0;
   border: 1px solid var(--dark-grey);
   background-color: var(--light-grey);
