@@ -6,6 +6,10 @@ const Layout = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 400px) {
+    margin: 15vh 0;
+  }
 `;
 
 export default Layout;

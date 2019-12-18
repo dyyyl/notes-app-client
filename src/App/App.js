@@ -10,6 +10,7 @@ import GlobalStyle from 'shared/styles/GlobalStyle';
 import AddNote from './AddNote';
 import Home from './Home';
 import Login from './Login';
+import Note from './Note';
 import NotFound from './NotFound';
 import SignUp from './SignUp';
 
@@ -68,6 +69,10 @@ const App = () => {
             />
 
             <Route path="/notes/new" render={() => <AddNote />} />
+            <Route
+              path="/notes/:id"
+              render={(props) => <Note params={props.match.params} />}
+            />
             <Route component={NotFound} />
           </Switch>
           <GlobalStyle />

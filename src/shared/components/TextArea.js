@@ -22,6 +22,10 @@ const TextArea = styled.textarea`
   &:invalid {
     box-shadow: none;
   }
+
+  @media (max-width: 340px) {
+    width: 50vw;
+  }
 `;
 
 export default TextArea;
