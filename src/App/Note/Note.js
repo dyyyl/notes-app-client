@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import deleteNote from 'shared/api/deleteNote';
 import loadNote from 'shared/api/loadNote';
 import saveNote from 'shared/api/saveNote';
 
@@ -106,6 +107,20 @@ const Note = ({ params }) => {
     }
 
     setDeleting(true);
+
+    try {
+      await deleteNote(params.id);
+
+      // if attachment is new, remove former attachment
+      if (note.attachment) {
+        await s3FileDelete(note.attachment);
+      }
+
+      setRedirect(true);
+    } catch (error) {
+      console.error(error);
+      setDeleting(false);
+    }
   };
 
   return (
