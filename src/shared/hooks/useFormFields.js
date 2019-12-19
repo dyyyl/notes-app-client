@@ -3,15 +3,15 @@ import { useState } from 'react';
 const useFormFields = (initialState) => {
   const [fields, setValues] = useState(initialState);
 
-  return [
+  return {
     fields,
-    (event) => {
+    handleFieldChange: (event) => {
       setValues({
         ...fields,
         [event.target.id]: event.target.value,
       });
     },
-  ];
+  };
 };
 
 export default useFormFields;

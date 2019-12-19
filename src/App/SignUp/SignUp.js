@@ -10,7 +10,7 @@ import SignUpConfirmation from './SignUpConfirmation';
 import SignUpForm from './SignUpForm';
 
 const SignUp = ({ authenticated, setAuthenticated }) => {
-  const [fields, handleFieldChange] = useFormFields({
+  const { fields, handleFieldChange } = useFormFields({
     email: '',
     password: '',
     confirmPassword: '',

@@ -14,7 +14,7 @@ import Layout from 'shared/components/Layout';
 import useFormFields from 'shared/hooks/useFormFields';
 
 const Login = ({ authenticated, setAuthenticated }) => {
-  const [fields, handleFieldChange] = useFormFields({
+  const { fields, handleFieldChange } = useFormFields({
     email: '',
     password: '',
   });
