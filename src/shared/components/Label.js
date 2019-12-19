@@ -9,7 +9,7 @@ const Label = styled.label`
 
   margin-bottom: 5rem;
 
-  ${props => (props.left ? 'align-self: flex-start;' : null)}
+  ${(props) => (props.left ? 'align-self: flex-start;' : null)}
 `;
 
 export default Label;

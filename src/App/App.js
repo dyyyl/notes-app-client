@@ -12,6 +12,7 @@ import Home from './Home';
 import Login from './Login';
 import Note from './Note';
 import NotFound from './NotFound';
+import Settings from './Settings';
 import SignUp from './SignUp';
 
 const App = () => {
@@ -68,11 +69,13 @@ const App = () => {
               )}
             />
 
+            <Route path="/settings" render={() => <Settings />} />
             <Route path="/notes/new" render={() => <AddNote />} />
             <Route
               path="/notes/:id"
               render={(props) => <Note params={props.match.params} />}
             />
+
             <Route component={NotFound} />
           </Switch>
           <GlobalStyle />

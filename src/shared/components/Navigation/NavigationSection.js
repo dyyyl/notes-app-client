@@ -6,6 +6,10 @@ const NavigationSection = styled.section`
   align-items: center;
   justify-content: space-around;
   min-width: 25%;
+
+  @media (max-width: 450px) {
+    min-width: 40vw;
+  }
 `;
 
 export default NavigationSection;

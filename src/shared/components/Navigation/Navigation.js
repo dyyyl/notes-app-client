@@ -1,6 +1,7 @@
 import { Auth } from 'aws-amplify';
 import PropTypes from 'prop-types';
 import React from 'react';
+import useMedia from 'use-media';
 
 import NavigationContainer from './NavigationContainer';
 import NavigationItem from './NavigationItem';
@@ -12,15 +13,20 @@ const Navigation = ({ authenticated, setAuthenticated }) => {
     setAuthenticated(false);
   };
 
+  const isMobile = useMedia({ maxWidth: '450px' });
+
   return (
     <NavigationContainer>
       <NavigationItem style={{ fontSize: '3rem' }} to="/">
-        Hello Notes
+        {isMobile ? 'HN' : 'Hello Notes'}
       </NavigationItem>
       {authenticated ? (
-        <NavigationItem to="/" onClick={handleLogout}>
-          Logout
-        </NavigationItem>
+        <NavigationSection>
+          <NavigationItem to="/settings">Settings</NavigationItem>
+          <NavigationItem to="/" onClick={handleLogout}>
+            Logout
+          </NavigationItem>
+        </NavigationSection>
       ) : (
         <NavigationSection>
           <NavigationItem to="/login">Login</NavigationItem>

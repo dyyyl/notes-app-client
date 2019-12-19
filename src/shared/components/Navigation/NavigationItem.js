@@ -21,6 +21,10 @@ const NavigationItem = styled(Link)`
   &:hover {
     background-size: 100% 100%;
   }
+
+  @media (max-width: 450px) {
+    font-size: 2rem;
+  }
 `;
 
 export default NavigationItem;
