@@ -8,6 +8,10 @@ const FooterContainer = styled.footer`
   align-items: center;
   justify-content: center;
   align-self: flex-end;
+
+  @media (max-height: 500px) {
+    height: 6vh;
+  }
 `;
 
 export default FooterContainer;
