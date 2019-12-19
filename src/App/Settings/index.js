@@ -37,7 +37,7 @@ const Settings = () => {
 
   return (
     <Layout>
-      <Heading>SETTINGS</Heading>
+      <Heading>Settings</Heading>
       <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
         <Elements>
           <BillingForm loading={loading} handleSubmit={handleSubmit} />
