@@ -1,7 +1,7 @@
+import { act } from 'react-test-renderer';
 import { renderHook } from '@testing-library/react-hooks';
 
 import useFormFields from 'shared/hooks/useFormFields';
-import { act } from 'react-test-renderer';
 
 describe('useFormFields hook', () => {
   const formFields = { unicorn: '', rainbow: '' };
