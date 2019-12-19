@@ -2,8 +2,10 @@ import { Auth } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import AuthenticatedRoute from 'shared/components/AuthenticatedRoute';
 import Footer from 'shared/components/Footer';
 import Navigation from 'shared/components/Navigation';
+import UnauthenticatedRoute from 'shared/components/UnauthenticatedRoute';
 
 import GlobalStyle from 'shared/styles/GlobalStyle';
 
@@ -50,30 +52,33 @@ const App = () => {
               render={() => <Home authenticated={authenticated} />}
             />
 
-            <Route
+            <UnauthenticatedRoute
               path="/login"
-              render={() => (
-                <Login
-                  authenticated={authenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              )}
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+              component={Login}
             />
-            <Route
+            <UnauthenticatedRoute
               path="/signup"
-              render={() => (
-                <SignUp
-                  authenticated={authenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              )}
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+              component={SignUp}
             />
 
-            <Route path="/settings" render={() => <Settings />} />
-            <Route path="/notes/new" render={() => <AddNote />} />
-            <Route
+            <AuthenticatedRoute
+              path="/settings"
+              authenticated={authenticated}
+              component={Settings}
+            />
+            <AuthenticatedRoute
+              path="/notes/new"
+              authenticated={authenticated}
+              component={AddNote}
+            />
+            <AuthenticatedRoute
               path="/notes/:id"
-              render={(props) => <Note params={props.match.params} />}
+              authenticated={authenticated}
+              component={Note}
             />
 
             <Route component={NotFound} />

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import Heading from 'shared/components/Heading';
 import Layout from 'shared/components/Layout';
@@ -9,7 +8,7 @@ import useFormFields from 'shared/hooks/useFormFields';
 import SignUpConfirmation from './SignUpConfirmation';
 import SignUpForm from './SignUpForm';
 
-const SignUp = ({ authenticated, setAuthenticated }) => {
+const SignUp = ({ setAuthenticated }) => {
   const { fields, handleFieldChange } = useFormFields({
     email: '',
     password: '',
@@ -18,44 +17,32 @@ const SignUp = ({ authenticated, setAuthenticated }) => {
   });
   const [newUser, setNewUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-
-  useEffect(() => {
-    if (authenticated) setRedirect(true);
-  }, [authenticated]);
 
   return (
-    <>
-      {!authenticated && (
-        <Layout>
-          <Heading>Sign up</Heading>
-          {newUser === null ? (
-            <SignUpForm
-              fields={fields}
-              handleFieldChange={handleFieldChange}
-              loading={loading}
-              setLoading={setLoading}
-              setNewUser={setNewUser}
-            />
-          ) : (
-            <SignUpConfirmation
-              fields={fields}
-              handleFieldChange={handleFieldChange}
-              loading={loading}
-              setAuthenticated={setAuthenticated}
-              setLoading={setLoading}
-              setRedirect={setRedirect}
-            />
-          )}
-        </Layout>
+    <Layout>
+      <Heading>Sign up</Heading>
+      {newUser === null ? (
+        <SignUpForm
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+          loading={loading}
+          setLoading={setLoading}
+          setNewUser={setNewUser}
+        />
+      ) : (
+        <SignUpConfirmation
+          fields={fields}
+          handleFieldChange={handleFieldChange}
+          loading={loading}
+          setAuthenticated={setAuthenticated}
+          setLoading={setLoading}
+        />
       )}
-      {redirect && <Redirect to="/" />}
-    </>
+    </Layout>
   );
 };
 
 SignUp.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
   setAuthenticated: PropTypes.func.isRequired,
 };
 

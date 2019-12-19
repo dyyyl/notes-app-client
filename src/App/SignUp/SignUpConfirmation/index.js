@@ -14,7 +14,6 @@ const SignUpConfirmation = ({
   loading,
   setAuthenticated,
   setLoading,
-  setRedirect,
 }) => {
   const validateForm = () => fields.confirmationCode.length > 0;
 
@@ -28,7 +27,6 @@ const SignUpConfirmation = ({
       await Auth.signIn(fields.email, fields.password);
 
       setAuthenticated(true);
-      setRedirect(true);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -58,7 +56,6 @@ SignUpConfirmation.propTypes = {
   loading: PropTypes.bool.isRequired,
   setAuthenticated: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
-  setRedirect: PropTypes.func.isRequired,
 };
 
 export default SignUpConfirmation;
