@@ -10,6 +10,7 @@ import Heading from 'shared/components/Heading';
 import Input from 'shared/components/Input';
 import Label from 'shared/components/Label';
 import Layout from 'shared/components/Layout';
+import Link from 'shared/components/Link';
 import useFormFields from 'shared/hooks/useFormFields';
 
 const Login = ({ setAuthenticated }) => {
@@ -47,7 +48,7 @@ const Login = ({ setAuthenticated }) => {
             required
           />
         </Label>
-        <Label htmlFor="password">
+        <Label htmlFor="password" style={{ marginBottom: '1rem' }}>
           Password
           <Input
             type="password"
@@ -56,6 +57,16 @@ const Login = ({ setAuthenticated }) => {
             required
           />
         </Label>
+        <Link
+          to="/login/reset"
+          style={{
+            fontSize: '1.5rem',
+            marginTop: '1rem',
+            marginBottom: '5rem',
+          }}
+        >
+          Forgot Password?
+        </Link>
         <Button type="submit">{loading ? 'LOADING' : 'LOGIN'}</Button>
       </Form>
     </Layout>
