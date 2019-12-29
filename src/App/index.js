@@ -14,6 +14,7 @@ import Home from './Home';
 import Login from './Login';
 import Note from './Note';
 import NotFound from './NotFound';
+import ResetPassword from './ResetPassword';
 import Settings from './Settings';
 import SignUp from './SignUp';
 
@@ -46,23 +47,27 @@ const App = () => {
             setAuthenticated={setAuthenticated}
           />
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Home authenticated={authenticated} />}
-            />
+            <Route exact path="/">
+              <Home authenticated={authenticated} />
+            </Route>
 
+            <UnauthenticatedRoute
+              path="/login/reset"
+              authenticated={authenticated}
+              component={ResetPassword}
+              setAuthenticated={setAuthenticated}
+            />
             <UnauthenticatedRoute
               path="/login"
               authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
               component={Login}
+              setAuthenticated={setAuthenticated}
             />
             <UnauthenticatedRoute
               path="/signup"
               authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
               component={SignUp}
+              setAuthenticated={setAuthenticated}
             />
 
             <AuthenticatedRoute

@@ -2,13 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const AuthenticatedRoute = ({
-  authenticated,
-  component: Component,
-  ...rest
-}) => (
+const AuthenticatedRoute = ({ authenticated, component: Component, path }) => (
   <Route
-    {...rest}
+    path={path}
     render={
       // eslint-disable-next-line
       (props) =>
@@ -28,6 +24,7 @@ AuthenticatedRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
   match: PropTypes.object,
+  path: PropTypes.string.isRequired,
 };
 
 AuthenticatedRoute.defaultProps = {

@@ -6,42 +6,28 @@ import handleQueryString from 'shared/libs/handleQueryString';
 
 const UnauthenticatedRoute = ({
   authenticated,
-  setAuthenticated,
   component: Component,
-  ...rest
+  path,
+  setAuthenticated,
 }) => {
   const redirect = handleQueryString('redirect');
 
   return (
-    <Route
-      {...rest}
-      render={
-        // eslint-disable-next-line
-        (props) =>
-          !authenticated ? ( // eslint-disable-line
-            <Component
-              params={props.match.params}
-              setAuthenticated={setAuthenticated}
-            />
-          ) : (
-            <Redirect
-              to={redirect === '' || redirect === null ? '/' : redirect}
-            />
-          )
-      }
-    />
+    <Route path={path}>
+      {!authenticated ? (
+        <Component setAuthenticated={setAuthenticated} />
+      ) : (
+        <Redirect to={redirect === '' || redirect === null ? '/' : redirect} />
+      )}
+    </Route>
   );
 };
 
 UnauthenticatedRoute.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
-  match: PropTypes.object,
+  path: PropTypes.string.isRequired,
   setAuthenticated: PropTypes.func.isRequired,
-};
-
-UnauthenticatedRoute.defaultProps = {
-  match: {},
 };
 
 export default UnauthenticatedRoute;
