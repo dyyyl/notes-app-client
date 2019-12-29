@@ -81,7 +81,7 @@ const App = () => {
               component={AddNote}
             />
             <AuthenticatedRoute
-              path="/notes/:id"
+              path="/notes/:userId"
               authenticated={authenticated}
               component={Note}
             />

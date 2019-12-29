@@ -1,7 +1,6 @@
 import { Storage } from 'aws-amplify';
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 import deleteNote from 'shared/api/deleteNote';
 import loadNote from 'shared/api/loadNote';
@@ -23,7 +22,7 @@ import validateForm from 'shared/libs/validateForm';
 
 import ButtonContainer from './ButtonContainer';
 
-const Note = ({ params }) => {
+const Note = () => {
   const file = useRef(null);
   const [note, setNote] = useState(null);
   const [content, setContent] = useState('');
@@ -31,10 +30,12 @@ const Note = ({ params }) => {
   const [deleting, setDeleting] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
+  const { userId } = useParams();
+
   useEffect(() => {
     const onLoad = async () => {
       try {
-        const noteData = await loadNote(params.id);
+        const noteData = await loadNote(userId);
         const { attachment } = noteData;
         const noteContent = noteData.content;
 
@@ -50,7 +51,7 @@ const Note = ({ params }) => {
     };
 
     onLoad();
-  }, [params.id]);
+  }, [userId]);
 
   const handleFileChange = (event) => {
     // eslint-disable-next-line
@@ -64,8 +65,8 @@ const Note = ({ params }) => {
 
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       console.warn(
-        `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
-          1000000} MB.`,
+        `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE
+          / 1000000} MB.`,
       );
       return;
     }
@@ -82,7 +83,7 @@ const Note = ({ params }) => {
         }
       }
 
-      await saveNote(params.id, {
+      await saveNote(userId, {
         content,
         attachment: attachment || note.attachment,
       });
@@ -109,7 +110,7 @@ const Note = ({ params }) => {
     setDeleting(true);
 
     try {
-      await deleteNote(params.id);
+      await deleteNote(userId);
 
       // if attachment is new, remove former attachment
       if (note.attachment) {
@@ -165,10 +166,6 @@ const Note = ({ params }) => {
       {redirect && <Redirect to="/" />}
     </Layout>
   );
-};
-
-Note.propTypes = {
-  params: PropTypes.object.isRequired,
 };
 
 export default Note;
