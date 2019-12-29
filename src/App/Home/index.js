@@ -21,7 +21,7 @@ const Home = ({ authenticated }) => {
         const noteData = await loadNotes();
         setNotes(noteData);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
 
       setLoading(false);

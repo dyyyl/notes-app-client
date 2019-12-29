@@ -15,7 +15,7 @@ const Settings = () => {
 
   const handleSubmit = async (storage, { token, error }) => {
     if (error) {
-      console.error(error);
+      alert(error);
       return;
     }
 
@@ -30,7 +30,7 @@ const Settings = () => {
       alert('Your card has been charged successfully!');
       setRedirect(true);
     } catch (err) {
-      console.error(err);
+      alert(err);
       setLoading(false);
     }
   };

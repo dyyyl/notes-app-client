@@ -29,10 +29,11 @@ const Login = ({ setAuthenticated }) => {
       setAuthenticated(true);
       // setRedirect(true);
     } catch (error) {
-      console.error(error.message);
+      alert(error.message);
       setLoading(false);
     }
   };
+
   return (
     <Layout>
       <Heading>Login</Heading>

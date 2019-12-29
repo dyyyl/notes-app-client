@@ -27,7 +27,7 @@ const App = () => {
       setAuthenticated(true);
     } catch (error) {
       if (error !== 'No current user') {
-        console.error(error);
+        alert(error);
       }
     }
     setIsAuthenticating(false);

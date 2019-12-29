@@ -43,10 +43,11 @@ const AddNote = () => {
       await createNote({ content, attachment });
       setRedirect(true);
     } catch (error) {
-      console.error(error);
+      alert(error);
       setLoading(false);
     }
   };
+
   return (
     <Layout>
       <Form onSubmit={handleSubmit}>

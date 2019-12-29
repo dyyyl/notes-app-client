@@ -45,7 +45,7 @@ const Note = ({ params }) => {
         setContent(noteContent);
         setNote(noteData);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
     };
 
@@ -89,7 +89,7 @@ const Note = ({ params }) => {
 
       setRedirect(true);
     } catch (error) {
-      console.error(error);
+      alert(error);
       setLoading(false);
     }
   };
@@ -118,7 +118,7 @@ const Note = ({ params }) => {
 
       setRedirect(true);
     } catch (error) {
-      console.error(error);
+      alert(error);
       setDeleting(false);
     }
   };

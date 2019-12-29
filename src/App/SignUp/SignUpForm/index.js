@@ -31,7 +31,7 @@ const SignUpForm = ({
       setLoading(false);
       setNewUser(newUser);
     } catch (error) {
-      console.error(error.message);
+      alert(error.message);
       setLoading(false);
     }
   };
